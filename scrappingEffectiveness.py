@@ -22,4 +22,7 @@ effectiveness_values = [cell.text.strip() for cell in effectiveness_cells]
 chunk_size = 18
 list_of_lists = [effectiveness_values[i:i+chunk_size] for i in range(0, len(effectiveness_values), chunk_size)]
 
-print(list_of_lists[1])
+print(list_of_lists[0])
+
+
+
