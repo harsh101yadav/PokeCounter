@@ -12,7 +12,7 @@ types = ["None","Normal","Fire","Water","Electric","Grass","Ice","Fighing","Pois
 # effectiveness_values = [cell.text.strip() for cell in effectiveness_cells]
 
 
-#cearing list of list
+#cearing lists within the list such that each type matchup has it's own list
 # chunk_size = 18
 # list_of_lists = []
 # for i in range(0, len(effectiveness_values), chunk_size):
@@ -28,5 +28,9 @@ with open("type_match_up.py","w") as file:
 # Filling up each list
 count = 0
 for i,type_name in enumerate(types,start = 1):
-    
-    from type_match_up import type_matchup_
+    x= "type_matchup_" + f"{type_name}"
+    from type_match_up import x
+    for j in range(19):
+        if(j==0):
+            x.update({"":types})
+        
