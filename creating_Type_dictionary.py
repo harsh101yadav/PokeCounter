@@ -5,7 +5,7 @@ url = "https://pokemondb.net/type/dual"
 r = requests.get(url)
 soup = BeautifulSoup(r.text, 'html.parser')
 
-types = ["None","Normal","Fire","Water","Electric","Grass","Ice","Fighing","Poison","Ground","Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","FAiry"]
+types = ("None","Normal","Fire","Water","Electric","Grass","Ice","Fighing","Poison","Ground","Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","FAiry")
 
 # Creating list for all types
 effectiveness_cells = soup.find_all("td", class_=lambda x: x and x.startswith("type-fx-cell"))
@@ -21,19 +21,25 @@ for i in range(0, len(effectiveness_values), chunk_size):
 
 
 #Opening python file and creating dictionaries
-with open("type_match_up.py","w") as file:
-    for type_name in types[1:]:
-        file.write(f"type_matchup_{type_name} = {{}}\n")
+# with open("type_match_up.py","w") as file:
+#     for type_name in types[1:]:
+#         file.write(f"type_matchup_{type_name} = {{}}\n")
 
 # Filling up each list
 count = 0
-for i,type_name in enumerate(types,start = 1):
-    x= "type_matchup_" + f"{type_name}"
-    from type_match_up import x
-    x.update({"":types})
+for i,type_name in enumerate(types[1:],start = 1):
+    # x = getattr(type_match_up, f"type_matchup_{type_name}")
+    x={}
+    print(type(x))
+    x["NA"]=types
     for j,secondary_type in enumerate(types):
         if(type_name==secondary_type):
             continue
-        x.update({[type_name,secondary_type]:list_of_lists[count]})
-        count = count + 1
+        if count < len(list_of_lists):
+            x.update({(type_name, secondary_type): list_of_lists[count]})
+            count += 1
+    print(x)
+    with open("type_match_up.py","a") as file:
+        file.write(f"type_matchup_{type_name} = {x}\n" )
+            
         
