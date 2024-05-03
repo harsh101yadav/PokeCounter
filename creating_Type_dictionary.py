@@ -18,7 +18,7 @@ list_of_lists = []
 for i in range(0, len(effectiveness_values), chunk_size):
     sublist = effectiveness_values[i:i+chunk_size]
     list_of_lists.append(sublist)
-
+print(list_of_lists)
 
 #Opening python file and creating dictionaries
 # with open("type_match_up.py","w") as file:
@@ -26,20 +26,21 @@ for i in range(0, len(effectiveness_values), chunk_size):
 #         file.write(f"type_matchup_{type_name} = {{}}\n")
 
 # Filling up each list
-count = 0
-for i,type_name in enumerate(types[1:],start = 1):
-    # x = getattr(type_match_up, f"type_matchup_{type_name}")
-    x={}
-    print(type(x))
-    x["NA"]=types
-    for j,secondary_type in enumerate(types):
-        if(type_name==secondary_type):
-            continue
-        if count < len(list_of_lists):
-            x.update({(type_name, secondary_type): list_of_lists[count]})
-            count += 1
-    print(x)
-    with open("type_match_up.py","a") as file:
-        file.write(f"type_matchup_{type_name} = {x}\n" )
+# count = 0
+# for i,type_name in enumerate(types[1:],start = 1):
+#     # x = getattr(type_match_up, f"type_matchup_{type_name}")
+#     x={}
+#     print(type(x))
+#     x["NA"]=types[1:]
+#     for j,secondary_type in enumerate(types):
+#         if(type_name==secondary_type):
+#             continue
+#         if count < len(list_of_lists):
+#             x.update({(type_name, secondary_type): list_of_lists[count]})
+#             print("\n")
+#             count += 1
+#     print(x)
+#     with open("type_match_up.py","a") as file:
+#         file.write(f"type_matchup_{type_name} = {x}\n" )
             
         
