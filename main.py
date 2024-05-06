@@ -12,8 +12,8 @@ def fetch_pokemon_data(enemy_pokemon):
     
 
     
-enemy_pokemon = input("Enter The pokemon you want to battle: ")
-# enemy_pokemon = "pikachu"
+# enemy_pokemon = input("Enter The pokemon you want to battle: ")
+enemy_pokemon = "pikachu"
 pokemon_data = fetch_pokemon_data(enemy_pokemon)# returns all values as dictionary
 
 print("Out of these moves")
